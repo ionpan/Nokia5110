@@ -12,13 +12,9 @@ ionpan
 
 
 Original release notes:
-
 7-17-2011
-
 Spark Fun Electronics 2011
-
 Nathan Seidle
-
 This code is public domain but you buy me a beer if you use this and we meet someday (Beerware license).
 
 This code writes a series of images and text to the Nokia 5110 84x48 graphic LCD:

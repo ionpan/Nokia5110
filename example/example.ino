@@ -123,7 +123,7 @@ void setup(void)
 
 void loop(void)
 {
-	lcd.clear(); // clears everything on the LCD
+	lcd.clear(); // clear everything on the LCD
 	lcd.bitmap(SFEFlame); // print bitmap array
 	delay(1000);
 
