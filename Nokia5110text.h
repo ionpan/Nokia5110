@@ -147,7 +147,7 @@ class Nokia5110text
 {
 	public:
 		
-		Nokia5110text(uint8_t SCE, uint8_t RESET, uint8_t DC, uint8_t SDIN, uint8_t SCLK, int COLS, int ROWS);
+		Nokia5110text(uint8_t SCE, uint8_t RESET, uint8_t DC, uint8_t SDIN, uint8_t SCLK);
 		
 		void gotoXY(int x, int y);
 		void bitmap(char my_array[]);
@@ -156,12 +156,17 @@ class Nokia5110text
 		void clear(void);
 		void init(void);
 		void write(byte data_or_command, byte data);
+		void set_contrast(uint16_t contrast);
+		void set_dimensions(int COLS, int ROWS);
+		void invert();
 	
 	uint8_t _SCE;
 	uint8_t _RESET;
 	uint8_t _DC;
 	uint8_t _SDIN;
 	uint8_t _SCLK;
+	uint16_t _contrast;
+	uint16_t _inverted;
 	int _COLS;
 	int _ROWS;
 	
