@@ -139,4 +139,12 @@ void loop(void)
         lcd.gotoXY(6, 2); // set marker to 16 pixels x-axis, 2nd row
 	lcd.string("Hello World!"); // print "Hello World!" string
 	delay(1000);
+
+	lcd.clear();
+	for (int i = 0; i < 84 * 6; i++) // write data to LCD directly
+	{
+		lcd.write(LCD_DATA, 0xFF);
+		lcd.write(LCD_DATA, 0x00);
+	}
+	delay(1000);
 }

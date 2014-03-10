@@ -35,7 +35,15 @@ You will need 5 signal lines to connect to the LCD, 3.3 or 5V for power, 3.3V fo
 #ifndef Nokia5110text_h
 #define Nokia5110text_h
 
+#if defined(ARDUINO) && ARDUINO >= 100
+
 #include "Arduino.h"
+
+#else
+
+#include "WProgram.h"
+
+#endif
 
 //The DC pin tells the LCD if we are sending a command or data
 #define LCD_COMMAND 0
@@ -160,15 +168,15 @@ class Nokia5110text
 		void set_dimensions(int COLS, int ROWS);
 		void invert();
 	
-	uint8_t _SCE;
-	uint8_t _RESET;
-	uint8_t _DC;
-	uint8_t _SDIN;
-	uint8_t _SCLK;
-	uint16_t _contrast;
-	uint16_t _inverted;
-	int _COLS;
-	int _ROWS;
+		uint8_t _SCE;
+		uint8_t _RESET;
+		uint8_t _DC;
+		uint8_t _SDIN;
+		uint8_t _SCLK;
+		uint16_t _contrast;
+		uint16_t _mode;
+		int _COLS;
+		int _ROWS;
 	
 };
 

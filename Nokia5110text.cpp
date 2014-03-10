@@ -1,5 +1,15 @@
 #include "Nokia5110text.h"
+
+#if defined(ARDUINO) && ARDUINO >= 100
+
 #include "Arduino.h"
+
+#else
+
+#include "WProgram.h"
+
+#endif
+
 
 Nokia5110text::Nokia5110text(uint8_t SCE, uint8_t RESET, uint8_t DC, uint8_t SDIN, uint8_t SCLK)
 {
@@ -10,7 +20,7 @@ Nokia5110text::Nokia5110text(uint8_t SCE, uint8_t RESET, uint8_t DC, uint8_t SDI
 	_SCLK = SCLK;
 	_COLS = 84;
 	_ROWS = 48;
-	_inverted = 0x0C;
+	_mode = 0x0C; // init to normal
 	_contrast = 0xBC;
 }
 
@@ -27,7 +37,14 @@ void Nokia5110text::set_dimensions(int COLS, int ROWS)
 
 void Nokia5110text::invert()
 {
-	_inverted = 0x0D;
+	if (_mode == 0x0C)
+	{
+		_mode = 0x0D; // change to inverted
+	}
+	else if (_mode == 0x0D)
+	{
+		_mode = 0x0C; // change to normal
+	}
 }
 
 void Nokia5110text::gotoXY(int x, int y)
@@ -68,7 +85,7 @@ void Nokia5110text::string(char *characters)
 //Clears the LCD by writing zeros to the entire screen
 void Nokia5110text::clear(void)
 {
-	for (int index = 0 ; index < (_COLS * _ROWS / 8) ; index++)
+	for (int index = 0; index < (_COLS * _ROWS / 8) ; index++)
 		write(LCD_DATA, 0x00);
 
 	gotoXY(0, 0); //After we clear the display, return to the home position
@@ -95,7 +112,7 @@ void Nokia5110text::init(void)
 	write(LCD_COMMAND, 0x14); //LCD bias mode 1:48: Try 0x13 or 0x14
 
 	write(LCD_COMMAND, 0x20); //We must send 0x20 before modifying the display control mode
-	write(LCD_COMMAND, _inverted); //Set display control, normal mode. 0x0D for inverse
+	write(LCD_COMMAND, _mode); //Set display control, normal mode. 0x0D for inverse
 }
 
 //There are two memory banks in the LCD, data/RAM and commands. This
