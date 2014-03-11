@@ -159,6 +159,7 @@ class Nokia5110text
 		
 		void gotoXY(int x, int y);
 		void bitmap(char my_array[]);
+		void prog_bitmap(char my_array[]);
 		void character(char character);
 		void string(char *characters);
 		void clear(void);

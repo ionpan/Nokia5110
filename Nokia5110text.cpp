@@ -60,6 +60,12 @@ void Nokia5110text::bitmap(char my_array[])
 		write(LCD_DATA, my_array[index]);
 }
 
+void Nokia5110text::prog_bitmap(char my_array[])
+{
+	for (int index = 0 ; index < (_COLS * _ROWS / 8) ; index++)
+		write(LCD_DATA, pgm_read_byte(&my_array[index]));
+}
+
 //This function takes in a character, looks it up in the font table/array
 //And writes it to the screen
 //Each character is 8 bits tall and 5 bits wide. We pad one blank column of
