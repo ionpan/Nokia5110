@@ -2,6 +2,8 @@
 
 Nokia5110text lcd(7, 6, 5, 4, 3); // (PIN_SCE, PIN_RESET, PIN_DC, PIN_SDIN, PIN_SCLK)
 
+char* hello[] PROGMEM = {"Hello World..", "I'm in flash!!"}; // string array stored in flash memory using PROGMEM modifier
+
 //This is the SFE flame in bit form
 char SFEFlame[] =
 {
@@ -132,12 +134,19 @@ void loop(void)
 	delay(1000);
 
 	lcd.clear();
-	lcd.bitmap(awesome);
+	lcd.bitmap(awesome); // print another bitmap array
 	delay(1000);
 
 	lcd.clear();
-        lcd.gotoXY(6, 2); // set marker to 16 pixels x-axis, 2nd row
+        lcd.gotoXY(6, 2); // set marker to 16 pixels on x-axis, 2nd row
 	lcd.string("Hello World!"); // print "Hello World!" string
+	delay(1000);
+
+	lcd.clear();
+	lcd.gotoXY(0, 2);
+	lcd.string(hello[0]); // print string array stored in flash memory
+	lcd.gotoXY(0, 3);
+	lcd.string(hello[1]); // print string array stored in flash memory
 	delay(1000);
 
 	lcd.clear();

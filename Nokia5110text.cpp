@@ -56,14 +56,18 @@ void Nokia5110text::gotoXY(int x, int y)
 //This takes a large array of bits and sends them to the LCD
 void Nokia5110text::bitmap(char my_array[])
 {
-	for (int index = 0 ; index < (_COLS * _ROWS / 8) ; index++)
+	for (int index = 0; index < (_COLS * _ROWS / 8); index++)
+	{
 		write(LCD_DATA, my_array[index]);
+	}
 }
 
-void Nokia5110text::prog_bitmap(char my_array[])
+void Nokia5110text::prog_bitmap(char bitmap_array[])
 {
-	for (int index = 0 ; index < (_COLS * _ROWS / 8) ; index++)
-		write(LCD_DATA, pgm_read_byte(&my_array[index]));
+	for (int index = 0; index < (_COLS * _ROWS / 8); index++)
+	{
+		write(LCD_DATA, pgm_read_byte(& bitmap_array[index]));
+	}
 }
 
 //This function takes in a character, looks it up in the font table/array
@@ -72,27 +76,33 @@ void Nokia5110text::prog_bitmap(char my_array[])
 //pixels on each side of the character for readability.
 void Nokia5110text::character(char character)
 {
-	//LCDWrite(LCD_DATA, 0x00); //Blank vertical line padding
+	//LCDWrite(LCD_DATA, 0x00); //Blank vertical line padding before character
 
-	for (int index = 0 ; index < 5 ; index++)
+	for (int index = 0; index <5 ; index++)
+	{
 		write(LCD_DATA, pgm_read_byte(&(ASCII[character - 0x20][index])));
+	}
 	//0x20 is the ASCII character for Space (' '). The font table starts with this character
 
-	write(LCD_DATA, 0x00); //Blank vertical line padding
+	write(LCD_DATA, 0x00); //Blank vertical line padding after character
 }
 
 //Given a string of characters, one by one is passed to the LCD
-void Nokia5110text::string(char *characters)
+void Nokia5110text::string(char* characters)
 {
 	while (*characters)
+	{
 		character(*characters++);
+	}
 }
 
 //Clears the LCD by writing zeros to the entire screen
 void Nokia5110text::clear(void)
 {
-	for (int index = 0; index < (_COLS * _ROWS / 8) ; index++)
+	for (int index = 0; index < (_COLS * _ROWS / 8); index++)
+	{
 		write(LCD_DATA, 0x00);
+	}
 
 	gotoXY(0, 0); //After we clear the display, return to the home position
 }

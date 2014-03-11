@@ -6,6 +6,15 @@ in some of my projects, and thought to share with you guys as I found it really 
 optimize it a bit by allocating the characters' HEX values to the flash memory instead of SRAM. No big of
 a deal but should save you 480Byte of SRAM.
 
+features:
+-ASCII characters' HEX values array is stored in flash memory
+-Support to set device pinout
+-Support to set screen dimensions in pixels
+-Support to set screen contrast
+-Support to change screen mode right through sketch (normal or inverted)
+-Support to display bitmap arrays stored in flash memory (using PROGMEM modifier)
+-Support for older Arduino IDE versions (>1.0)
+
 Thank you Nathan
 
 ionpan
