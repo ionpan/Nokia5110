@@ -1,8 +1,8 @@
 This code writes a series of images and text to the Nokia 5110 84x48 graphic LCD:
-(http://www.sparkfun.com/products/10168)
+http://www.sparkfun.com/products/10168
 
 It is based on an example for the Nokia 5110 LCD module, which was written by Nathan Seidle:
-(http://dlnmh9ip6v2uc.cloudfront.net/datasheets/LCD/Monochrome/Nokia_5110_Example.pde).
+http://dlnmh9ip6v2uc.cloudfront.net/datasheets/LCD/Monochrome/Nokia_5110_Example.pde
 
 I converted it to an Arduino library, with an accompanying example. Also saved 480Bytes of SRAM.
 
