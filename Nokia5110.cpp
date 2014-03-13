@@ -8,7 +8,7 @@ This code is public domain but you buy me a beer if you use this and we meet som
 
 */
 
-#include "Nokia5110text.h"
+#include "Nokia5110.h"
 
 #if defined(ARDUINO) && ARDUINO >= 100
 
