@@ -1,3 +1,13 @@
+/*
+7-17-2011
+Spark Fun Electronics 2011
+Nathan Seidle
+Modified on 03-12-2014 by ionpan
+
+This code is public domain but you buy me a beer if you use this and we meet someday (Beerware license).
+
+*/
+
 #include "Nokia5110text.h"
 
 #if defined(ARDUINO) && ARDUINO >= 100
