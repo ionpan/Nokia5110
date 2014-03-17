@@ -13,7 +13,7 @@ Features:
  * Support to set screen contrast
  * Support to change screen mode right through sketch (normal or inverted)
  * Support to display bitmap arrays stored in flash memory (using PROGMEM modifier)
- * Support for older Arduino IDE versions (>1.0)
+ * Support for older Arduino IDE versions (<1.0)
 
 
 Original release notes:
