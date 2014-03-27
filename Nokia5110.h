@@ -8,8 +8,8 @@ This code is public domain but you buy me a beer if you use this and we meet som
 
 */
 
-#ifndef Nokia5110text_h
-#define Nokia5110text_h
+#ifndef Nokia5110_h
+#define Nokia5110_h
 
 #if defined(ARDUINO) && ARDUINO >= 100
 
@@ -127,22 +127,22 @@ static const byte ASCII[][5] PROGMEM =
 	, {0x78, 0x46, 0x41, 0x46, 0x78} // 7f DEL
 };
 
-class Nokia5110text
+class Nokia5110
 {
 	public:
 		
-		Nokia5110text(uint8_t SCE, uint8_t RESET, uint8_t DC, uint8_t SDIN, uint8_t SCLK);
+		Nokia5110(uint8_t SCE, uint8_t RESET, uint8_t DC, uint8_t SDIN, uint8_t SCLK);
 		
 		void gotoXY(int x, int y);
-		void bitmap(char bitmap_array[]);
-		void prog_bitmap(char bitmap_array[]);
+		void bitmap(char bitmapArray[]);
+		void progBitmap(char bitmapArray[]);
 		void character(char character);
 		void string(char* characters);
 		void clear(void);
 		void init(void);
 		void write(byte data_or_command, byte data);
-		void set_contrast(uint16_t contrast);
-		void set_dimensions(int COLS, int ROWS);
+		void setContrast(uint16_t contrast);
+		void setDimensions(int COLS, int ROWS);
 		void invert();
 	
 		uint8_t _SCE;

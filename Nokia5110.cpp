@@ -11,17 +11,12 @@ This code is public domain but you buy me a beer if you use this and we meet som
 #include "Nokia5110.h"
 
 #if defined(ARDUINO) && ARDUINO >= 100
-
 #include "Arduino.h"
-
 #else
-
 #include "WProgram.h"
-
 #endif
 
-
-Nokia5110text::Nokia5110text(uint8_t SCE, uint8_t RESET, uint8_t DC, uint8_t SDIN, uint8_t SCLK)
+Nokia5110::Nokia5110(uint8_t SCE, uint8_t RESET, uint8_t DC, uint8_t SDIN, uint8_t SCLK)
 {
 	_SCE = SCE;
 	_RESET = RESET;
@@ -34,18 +29,18 @@ Nokia5110text::Nokia5110text(uint8_t SCE, uint8_t RESET, uint8_t DC, uint8_t SDI
 	_contrast = 0xBC;
 }
 
-void Nokia5110text::set_contrast(uint16_t contrast)
+void Nokia5110::setContrast(uint16_t contrast)
 {
 	_contrast = contrast;
 }
 
-void Nokia5110text::set_dimensions(int COLS, int ROWS)
+void Nokia5110::setDimensions(int COLS, int ROWS)
 {
 	_COLS = COLS;
 	_ROWS = ROWS;
 }
 
-void Nokia5110text::invert()
+void Nokia5110::invert()
 {
 	if (_mode == 0x0C)
 	{
@@ -57,26 +52,26 @@ void Nokia5110text::invert()
 	}
 }
 
-void Nokia5110text::gotoXY(int x, int y)
+void Nokia5110::gotoXY(int x, int y)
 {
 	write(0, 0x80 | x);  // Column.
 	write(0, 0x40 | y);  // Row.  ?
 }
 
 //This takes a large array of bits and sends them to the LCD
-void Nokia5110text::bitmap(char my_array[])
+void Nokia5110::bitmap(char bitmapArray[])
 {
 	for (int index = 0; index < (_COLS * _ROWS / 8); index++)
 	{
-		write(LCD_DATA, my_array[index]);
+		write(LCD_DATA, bitmapArray[index]);
 	}
 }
 
-void Nokia5110text::prog_bitmap(char bitmap_array[])
+void Nokia5110::progBitmap(char bitmapArray[])
 {
 	for (int index = 0; index < (_COLS * _ROWS / 8); index++)
 	{
-		write(LCD_DATA, pgm_read_byte(& bitmap_array[index]));
+		write(LCD_DATA, pgm_read_byte(& bitmapArray[index]));
 	}
 }
 
@@ -84,11 +79,11 @@ void Nokia5110text::prog_bitmap(char bitmap_array[])
 //And writes it to the screen
 //Each character is 8 bits tall and 5 bits wide. We pad one blank column of
 //pixels on each side of the character for readability.
-void Nokia5110text::character(char character)
+void Nokia5110::character(char character)
 {
 	//LCDWrite(LCD_DATA, 0x00); //Blank vertical line padding before character
 
-	for (int index = 0; index <5 ; index++)
+	for (int index = 0; index < 5 ; index++)
 	{
 		write(LCD_DATA, pgm_read_byte(&(ASCII[character - 0x20][index])));
 	}
@@ -98,7 +93,7 @@ void Nokia5110text::character(char character)
 }
 
 //Given a string of characters, one by one is passed to the LCD
-void Nokia5110text::string(char* characters)
+void Nokia5110::string(char* characters)
 {
 	while (*characters)
 	{
@@ -107,7 +102,7 @@ void Nokia5110text::string(char* characters)
 }
 
 //Clears the LCD by writing zeros to the entire screen
-void Nokia5110text::clear(void)
+void Nokia5110::clear(void)
 {
 	for (int index = 0; index < (_COLS * _ROWS / 8); index++)
 	{
@@ -118,7 +113,7 @@ void Nokia5110text::clear(void)
 }
 
 //This sends the magical commands to the PCD8544
-void Nokia5110text::init(void)
+void Nokia5110::init(void)
 {
 
 	//Configure control pins
@@ -144,7 +139,7 @@ void Nokia5110text::init(void)
 //There are two memory banks in the LCD, data/RAM and commands. This
 //function sets the DC pin high or low depending, and then sends
 //the data byte
-void Nokia5110text::write(byte data_or_command, byte data)
+void Nokia5110::write(byte data_or_command, byte data)
 {
 	digitalWrite(_DC, data_or_command); //Tell the LCD that we are writing either to data or a command
 
