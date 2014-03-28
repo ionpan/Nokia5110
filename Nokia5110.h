@@ -21,12 +21,12 @@ This code is public domain but you buy me a beer if you use this and we meet som
 
 #endif
 
-//The DC pin tells the LCD if we are sending a command or data
+// the DC pin tells the LCD if we are sending a command or data
 #define LCD_COMMAND 0
 #define LCD_DATA  1
 
-//This table contains the hex values that represent pixels
-//for a font that is 5 pixels wide and 8 pixels high
+// This table contains the hex values that represent pixels
+// for a font that is 5 pixels wide and 8 pixels high
 static const byte ASCII[][5] PROGMEM =
 {
 	{0x00, 0x00, 0x00, 0x00, 0x00} // 20
@@ -133,14 +133,14 @@ class Nokia5110
 		
 		Nokia5110(uint8_t _SCE, uint8_t _RESET, uint8_t _DC, uint8_t _SDIN, uint8_t _SCLK);
 		
-		void gotoXY(int x, int y);
-		void bitmap(char bitmapArray[]);
-		void progBitmap(char bitmapArray[]);
-		void character(char character);
-		void string(char* characters);
+		void gotoXY(int _x, int _y);
+		void bitmap(char _bitmapArray[]);
+		void progBitmap(char _bitmapArray[]);
+		void character(char _character);
+		void string(char* _characters);
 		void clear(void);
 		void init(void);
-		void write(byte data_or_command, byte data);
+		void write(byte _data_or_command, byte _data);
 		void setContrast(uint16_t _contrast);
 		void setDimensions(int _COLS, int _ROWS);
 		void invert();

@@ -61,26 +61,26 @@ void Nokia5110::invert()
 	}
 }
 
-void Nokia5110::gotoXY(int x, int y)
+void Nokia5110::gotoXY(int _x, int _y)
 {
-	write(0, 0x80 | x);  // Column.
-	write(0, 0x40 | y);  // Row.  ?
+	write(0, 0x80 | _x);  // Column.
+	write(0, 0x40 | _y);  // Row.  ?
 }
 
 // this takes a large array of bits and sends them to the LCD
-void Nokia5110::bitmap(char bitmapArray[])
+void Nokia5110::bitmap(char _bitmapArray[])
 {
 	for (int index = 0; index < (COLS * ROWS / 8); index++)
 	{
-		write(LCD_DATA, bitmapArray[index]);
+		write(LCD_DATA, _bitmapArray[index]);
 	}
 }
 
-void Nokia5110::progBitmap(char bitmapArray[])
+void Nokia5110::progBitmap(char _bitmapArray[])
 {
 	for (int index = 0; index < (COLS * ROWS / 8); index++)
 	{
-		write(LCD_DATA, pgm_read_byte(& bitmapArray[index]));
+		write(LCD_DATA, pgm_read_byte(& _bitmapArray[index]));
 	}
 }
 
@@ -88,13 +88,13 @@ void Nokia5110::progBitmap(char bitmapArray[])
 // And writes it to the screen
 // Each character is 8 bits tall and 5 bits wide. We pad one blank column of
 // pixels on each side of the character for readability.
-void Nokia5110::character(char character)
+void Nokia5110::character(char _character)
 {
 	//LCDWrite(LCD_DATA, 0x00); // blank vertical line padding before character
 
 	for (int index = 0; index < 5 ; index++)
 	{
-		write(LCD_DATA, pgm_read_byte(&(ASCII[character - 0x20][index])));
+		write(LCD_DATA, pgm_read_byte(&(ASCII[_character - 0x20][index])));
 	}
 	//0x20 is the ASCII character for Space (' '). The font table starts with this character
 
@@ -102,11 +102,11 @@ void Nokia5110::character(char character)
 }
 
 // given a string of characters, one by one is passed to the LCD
-void Nokia5110::string(char* characters)
+void Nokia5110::string(char* _characters)
 {
-	while (*characters)
+	while (*_characters)
 	{
-		character(*characters++);
+		character(*_characters++);
 	}
 }
 
@@ -140,12 +140,12 @@ void Nokia5110::init(void)
 // There are two memory banks in the LCD, data/RAM and commands. This
 // function sets the DC pin high or low depending, and then sends
 // the data byte
-void Nokia5110::write(byte data_or_command, byte data)
+void Nokia5110::write(byte _data_or_command, byte _data)
 {
-	digitalWrite(DC, data_or_command); // tell the LCD that we are writing either to data or a command
+	digitalWrite(DC, _data_or_command); // tell the LCD that we are writing either to data or a command
 
 	// send the data
 	digitalWrite(SCE, LOW);
-	shiftOut(SDIN, SCLK, MSBFIRST, data);
+	shiftOut(SDIN, SCLK, MSBFIRST, _data);
 	digitalWrite(SCE, HIGH);
 }

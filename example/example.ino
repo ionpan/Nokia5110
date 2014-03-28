@@ -21,6 +21,7 @@
 #include <Nokia5110.h>
 
 Nokia5110 lcd(7, 6, 5, 4, 3); // (PIN_SCE, PIN_RESET, PIN_DC, PIN_SDIN, PIN_SCLK)
+// PIN_SDIN and PIN_SCLK should be driven by PWM enabled pins
 
 char* hello[] PROGMEM = {"Hello World..", "I'm in flash!!"}; // string array stored in flash memory using PROGMEM modifier
 
@@ -138,7 +139,7 @@ char awesome[] =
 void setup(void)
 {
 	//lcd.invert();  // invert screen mode, if not selected mode is normal
-	//lcd.setContrast(0xBF); // set contrast value (range: 0xB1 - 0xBF), if not selected default constast is 0xBC
+	//lcd.setContrast(0xBC); // set contrast value (range: 0xB1 - 0xBF), if not selected default constast is 0xBC
 	//lcd.setDimensions(84, 48); // set LCD dimensions, if not selected default dimensions are 84x48 pixels
 	lcd.init(); //Init the LCD
 }
