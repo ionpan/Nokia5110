@@ -5,7 +5,6 @@ Nathan Seidle
 Modified on 03-12-2014 by ionpan
 
 This code is public domain but you buy me a beer if you use this and we meet someday (Beerware license).
-
 */
 
 #ifndef Nokia5110_h
