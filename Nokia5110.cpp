@@ -63,8 +63,8 @@ void Nokia5110::invert()
 
 void Nokia5110::gotoXY(int _x, int _y)
 {
-	write(0, 0x80 | _x);  // Column.
-	write(0, 0x40 | _y);  // Row.  ?
+	write(0, 0x80 | _x);  // column.
+	write(0, 0x40 | _y);  // row.  ?
 }
 
 // this takes a large array of bits and sends them to the LCD
@@ -87,7 +87,7 @@ void Nokia5110::progBitmap(char _bitmapArray[])
 // This function takes in a character, looks it up in the font table/array
 // And writes it to the screen
 // Each character is 8 bits tall and 5 bits wide. We pad one blank column of
-// pixels on each side of the character for readability.
+// pixels on the right side of the character for readability.
 void Nokia5110::character(char _character)
 {
 	//LCDWrite(LCD_DATA, 0x00); // blank vertical line padding before character
