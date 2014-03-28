@@ -34,7 +34,7 @@ Nokia5110::Nokia5110(uint8_t _SCE, uint8_t _RESET, uint8_t _DC, uint8_t _SDIN, u
 	// set default display values
 	COLS = 84;
 	ROWS = 48;
-	mode = 0x0C; // init to normal
+	mode = 0x0C; // set to normal
 	contrast = 0xBC;
 }
 
