@@ -25,7 +25,7 @@ Nokia5110 lcd(7, 6, 5, 4, 3); // (PIN_SCE, PIN_RESET, PIN_DC, PIN_SDIN, PIN_SCLK
 
 char* hello[] PROGMEM = {"Hello World..", "I'm in flash!!"}; // string array stored in flash memory using PROGMEM modifier
 
-// this is the SFE flame in bit form
+// this is the SFE flame in bitmap form
 char SFEFlame[] =
 {
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -62,7 +62,7 @@ char SFEFlame[] =
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 };
 
-// another SparkFun logo stored in flash memory using PROGMEM modifier
+// another SparkFun logo in bitmap form stored in flash memory using PROGMEM modifier
 char SFEFlameBubble [] PROGMEM =
 {
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80,
