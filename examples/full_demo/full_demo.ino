@@ -23,7 +23,7 @@
 Nokia5110 lcd(7, 6, 5, 4, 3); // (PIN_SCE, PIN_RESET, PIN_DC, PIN_SDIN, PIN_SCLK)
 // PIN_SDIN and PIN_SCLK should be driven by PWM enabled pins
 
-char* hello[] PROGMEM = {"Hello World..", "I'm in flash!!"}; // string array stored in flash memory using PROGMEM modifier
+char* const hello[] PROGMEM = {"Hello World..", "I'm in flash!!"}; // string array stored in flash memory using PROGMEM modifier
 
 // this is the SFE flame in bitmap form
 char SFEFlame[] =
@@ -63,7 +63,7 @@ char SFEFlame[] =
 };
 
 // another SparkFun logo in bitmap form stored in flash memory using PROGMEM modifier
-char SFEFlameBubble [] PROGMEM =
+char const SFEFlameBubble [] PROGMEM =
 {
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80,
 	0xC0, 0xC0, 0xE0, 0xE0, 0xF0, 0xF8, 0xF8, 0xFC, 0xFC, 0xFC, 0xFC, 0xFE, 0xFE, 0xFE, 0xFE, 0xFE,
