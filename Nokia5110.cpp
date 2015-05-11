@@ -76,7 +76,7 @@ void Nokia5110::bitmap(char _bitmapArray[])
 	}
 }
 
-void Nokia5110::progBitmap(char _bitmapArray[])
+void Nokia5110::progBitmap(char const _bitmapArray[])
 {
 	for (int index = 0; index < (COLS * ROWS / 8); index++)
 	{

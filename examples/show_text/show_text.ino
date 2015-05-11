@@ -7,7 +7,7 @@
 Nokia5110 lcd(7, 6, 5, 4, 3); // (PIN_SCE, PIN_RESET, PIN_DC, PIN_SDIN, PIN_SCLK)
 // PIN_SDIN and PIN_SCLK should be driven by PWM enabled pins
 
-char* hello[] PROGMEM = {"This is flash!"}; // string array stored in flash memory using PROGMEM modifier
+char* const hello[] PROGMEM = {"This is flash!"}; // string array stored in flash memory using PROGMEM modifier
 
 void setup(void)
 {
